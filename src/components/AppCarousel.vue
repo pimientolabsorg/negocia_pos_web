@@ -1,12 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue'
-
-const props = withDefaults(
-  defineProps<{
-    interval?: number
-  }>(),
-  { interval: 4000 },
-)
+import { computed, ref } from 'vue'
 
 const modules = import.meta.glob('../assets/images/*', {
   eager: true,
@@ -42,22 +35,24 @@ function select(index: number) {
   active.value = index
 }
 
-let timer: ReturnType<typeof setInterval> | undefined
+const SWIPE_THRESHOLD = 40
 
-function start() {
-  stop()
-  timer = setInterval(() => go(1), props.interval)
+let startX = 0
+let dragging = false
+
+function onPointerDown(event: PointerEvent) {
+  startX = event.clientX
+  dragging = true
 }
 
-function stop() {
-  if (timer) {
-    clearInterval(timer)
-    timer = undefined
+function onPointerUp(event: PointerEvent) {
+  if (!dragging) return
+  dragging = false
+  const deltaX = event.clientX - startX
+  if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
+    go(deltaX < 0 ? 1 : -1)
   }
 }
-
-onMounted(start)
-onUnmounted(stop)
 </script>
 
 <template>
@@ -68,7 +63,7 @@ onUnmounted(stop)
         <h2>Conoce <span class="green">negocia_pos.</span></h2>
       </div>
 
-      <div class="carousel" @mouseenter="stop" @mouseleave="start">
+      <div class="carousel">
         <button
           class="carousel-arrow carousel-arrow--prev"
           type="button"
@@ -78,7 +73,12 @@ onUnmounted(stop)
           &#8249;
         </button>
 
-        <div class="carousel-viewport">
+        <div
+          class="carousel-viewport"
+          @pointerdown="onPointerDown"
+          @pointerup="onPointerUp"
+          @pointerleave="dragging = false"
+        >
           <button
             v-for="item in shown"
             :key="item.index"
