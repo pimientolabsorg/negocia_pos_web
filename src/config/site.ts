@@ -15,6 +15,8 @@ export const whatsappUrl = `https://wa.me/${whatsappNumber}`
 
 export const apkUrl = 'negocia_pos.apk'
 
+export const devUrl = 'https://pimientolabs.vercel.app/'
+
 export const features: Feature[] = [
   { number: '01', title: 'Ventas' },
   { number: '02', title: 'Inventario' },

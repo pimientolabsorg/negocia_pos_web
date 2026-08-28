@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { brand, brandAccent } from '@/config/site'
+import { brand, brandAccent, devUrl } from '@/config/site'
 import devLogo from '@/assets/pimientolabs-logo.svg'
 </script>
 
@@ -8,10 +8,10 @@ import devLogo from '@/assets/pimientolabs-logo.svg'
     <div class="container">
       <div class="footer-brand">{{ brand }}<span>{{ brandAccent }}</span></div>
 
-      <div class="footer-dev">
+      <a class="footer-dev" :href="devUrl" target="_blank" rel="noopener">
         <span>Desarrollado Por:</span>
         <img class="footer-dev-logo" :src="devLogo" alt="Pimiento Labs" />
-      </div>
+      </a>
 
       <small>La forma fácil de llevar tu negocio.</small>
     </div>

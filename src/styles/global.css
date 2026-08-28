@@ -212,6 +212,11 @@ footer {
   margin-top: 20px;
   color: #94A3B8;
   font-size: 14px;
+  text-decoration: none;
+}
+
+.footer-dev:hover {
+  opacity: 0.85;
 }
 
 .footer-dev-logo {
@@ -265,14 +270,14 @@ footer small {
 }
 
 .carousel-slide--active {
-  width: 360px;
+  width: 300px;
   aspect-ratio: 9 / 19;
   opacity: 1;
   box-shadow: 0 14px 34px rgba(21, 101, 245, 0.1);
 }
 
 .carousel-slide--side {
-  width: 190px;
+  width: 160px;
   aspect-ratio: 9 / 19;
   opacity: 0.6;
   cursor: pointer;
@@ -310,7 +315,7 @@ footer small {
   }
 
   .carousel-slide--active {
-    width: min(100% - 28px, 360px);
+    width: min(100% - 28px, 300px);
   }
 }
 
