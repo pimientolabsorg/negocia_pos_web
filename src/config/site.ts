@@ -13,7 +13,7 @@ export const brandAccent = 'pos'
 export const whatsappNumber = '5355820905'
 export const whatsappUrl = `https://wa.me/${whatsappNumber}`
 
-export const apkUrl = 'negocia_pos.apk'
+export const apkUrl = 'https://loadly.io/Yzyxv7ML'
 
 export const devUrl = 'https://pimientolabs.vercel.app/'
 

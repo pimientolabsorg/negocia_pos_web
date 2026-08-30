@@ -19,7 +19,7 @@ import { brand, brandAccent, whatsappUrl, apkUrl } from '@/config/site'
       <p class="hero-text">Vende. Controla. Crece.</p>
 
       <div class="hero-actions">
-        <BaseButton variant="primary" :href="apkUrl" download>
+        <BaseButton variant="primary" :href="apkUrl">
           Descargar app
         </BaseButton>
 

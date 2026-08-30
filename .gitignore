@@ -37,3 +37,6 @@ __screenshots__/
 
 # Vite
 *.timestamp-*-*.mjs
+
+# APKs hosted externally (see https://loadly.io/Yzyxv7ML)
+*.apk
