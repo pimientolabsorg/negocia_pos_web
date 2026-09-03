@@ -236,18 +236,25 @@ footer small {
 }
 
 .carousel {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 0;
+}
+
+.carousel-section .container {
+  width: min(1240px, calc(100% - 36px));
 }
 
 .carousel-viewport {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  flex: 1 1 auto;
+  gap: 20px;
   touch-action: pan-y;
+  min-width: 0;
 }
 
 .carousel-slide {
@@ -260,26 +267,27 @@ footer small {
   background: var(--white);
   cursor: default;
   overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .carousel-slide-img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   display: block;
 }
 
 .carousel-slide--active {
-  width: 300px;
-  aspect-ratio: 9 / 19;
+  width: min(540px, 100%);
+  flex: 0 1 auto;
   opacity: 1;
   box-shadow: 0 14px 34px rgba(21, 101, 245, 0.1);
 }
 
 .carousel-slide--side {
-  width: 160px;
-  aspect-ratio: 9 / 19;
+  width: 260px;
+  flex: 0 1 auto;
   opacity: 0.6;
   cursor: pointer;
 }
@@ -289,34 +297,75 @@ footer small {
 }
 
 .carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   flex: 0 0 auto;
   border: 1px solid var(--line);
   border-radius: 50%;
   background: var(--white);
   color: var(--blue);
-  font-size: 26px;
+  font-size: 30px;
   line-height: 1;
   cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
+.carousel-arrow--prev {
+  left: 0;
+}
+
+.carousel-arrow--next {
+  right: 0;
+}
+
 .carousel-arrow:hover {
-  transform: translateY(-2px);
+  transform: translateY(-50%) translateY(-2px);
   opacity: 0.94;
 }
 
+@media (max-width: 1020px) {
+  .carousel-slide--active {
+    width: min(440px, 100%);
+  }
+
+  .carousel-slide--side {
+    width: 210px;
+  }
+}
+
 @media (max-width: 700px) {
+  .carousel-viewport {
+    flex: 1 1 auto;
+  }
+
+  .carousel-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+  }
+
+  .carousel-arrow--prev {
+    left: 4px;
+  }
+
+  .carousel-arrow--next {
+    right: 4px;
+  }
+
   .carousel-slide--side {
     display: none;
   }
 
   .carousel-slide--active {
-    width: min(100% - 28px, 300px);
+    width: min(100%, 480px);
   }
 }
 
