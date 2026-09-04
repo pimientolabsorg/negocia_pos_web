@@ -1,7 +1,7 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-    variant?: 'primary' | 'outline'
+    variant?: 'primary' | 'outline' | 'channel'
     href?: string
     download?: boolean
   }>(),
